@@ -1,0 +1,9 @@
+基本設計書
+システム名
+sample
+OS
+RockyLinux9
+CPU
+4
+メモリ
+8GB
