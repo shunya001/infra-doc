@@ -1,9 +1,11 @@
 基本設計書
 システム名
-sample
+sa
 OS
-RockyLinux9
+L
 CPU
 4
 メモリ
-8GB
+8gb
+ミドルウェア
+nginx

@@ -12,6 +12,8 @@ type DocumentData struct {
 	OS      string
 	CPU     string
 	Memory  string
+	Middleware string
+	Procedure  string
 }
 
 func GenerateFile(
@@ -40,4 +42,23 @@ func GenerateFile(
 	}
 
 	return nil
+}
+
+func GetProcedure(middleware string) string {
+	switch middleware {
+		case "nginx":
+			return `
+sudo dnf install nginx -y
+sudo systemctl enable nginx
+sudo systemctl start nginx
+	`
+		case "apache":
+			return `
+sudo dnf install httpd -y
+sudo systemctl enable httpd
+sudo systemctl start httpd
+	`
+		default:
+			return "manual installation"
+	}
 }

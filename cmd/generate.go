@@ -14,6 +14,7 @@ var generateCmd = &cobra.Command{
 		var osName string
 		var cpu string
 		var memory string
+		var middleware string
 
 		fmt.Print("Project Name: ")
 		fmt.Scanln(&project)
@@ -27,11 +28,20 @@ var generateCmd = &cobra.Command{
 		fmt.Print("Memory: ")
 		fmt.Scanln(&memory)
 
+		fmt.Print("Middleware: ")
+		fmt.Scanln(&middleware)
+
+		procedure := generator.GetProcedure(
+			middleware,
+		)
+
 		data := generator.DocumentData{
 			Project: project,
 			OS:      osName,
 			CPU:     cpu,
 			Memory:  memory,
+			Middleware: middleware,
+			Procedure: procedure,
 		}
 
 		err := generator.GenerateFile(
@@ -57,6 +67,18 @@ var generateCmd = &cobra.Command{
 		}
 
 		fmt.Println("parameter_sheet.md generated")
+
+		err = generator.GenerateFile(
+			"internal/template/build_procedure.tmpl",
+			"output/build_procedure.md",
+			data,
+		)
+
+		if err != nil {
+			panic(err)
+		}
+
+		fmt.Println("build_procedure.md generated")
 		
 	},
 }

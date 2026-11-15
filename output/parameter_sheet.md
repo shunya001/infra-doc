@@ -1,6 +1,7 @@
 パラメータシート
 項目	値
-Project	sample
-OS	RockyLinux9
+Project	sa
+OS	L
 CPU	4
-Memory	8GB
+Memory	8gb
+Middleware	nginx
