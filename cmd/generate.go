@@ -2,8 +2,6 @@ package cmd
 
 import (
 	"fmt"
-	"os"
-	"text/template"
 
 	"github.com/shunya001/infra-doc/internal/generator"
 	"github.com/spf13/cobra"
@@ -36,31 +34,30 @@ var generateCmd = &cobra.Command{
 			Memory:  memory,
 		}
 
-		tmpl, err := template.ParseFiles(
+		err := generator.GenerateFile(
 			"internal/template/basic_design.tmpl",
-		)
-
-		if err != nil {
-			panic(err)
-		}
-
-		file, err := os.Create(
 			"output/basic_design.md",
+			data,
 		)
-
-		if err != nil {
-			panic(err)
-		}
-
-		defer file.Close()
-
-		err = tmpl.Execute(file, data)
 
 		if err != nil {
 			panic(err)
 		}
 
 		fmt.Println("basic_design.md generated")
+
+		err = generator.GenerateFile(
+			"internal/template/parameter_sheet.tmpl",
+			"output/parameter_sheet.md",
+			data,
+		)
+
+		if err != nil {
+			panic(err)
+		}
+
+		fmt.Println("parameter_sheet.md generated")
+		
 	},
 }
 
