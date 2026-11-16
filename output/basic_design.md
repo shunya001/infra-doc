@@ -1,13 +1,13 @@
 基本設計書
 システム名
-sa
+web
 ホスト名
 p-fukugyou-01
 OS
-L
+RockyLinux9
 CPU
 4
 メモリ
-8gb
+8GB
 ミドルウェア
 nginx

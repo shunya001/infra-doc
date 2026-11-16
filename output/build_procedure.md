@@ -1,8 +1,8 @@
 構築手順書
 プロジェクト
-sa
+web
 OS
-L
+RockyLinux9
 ミドルウェア
 nginx
 手順
