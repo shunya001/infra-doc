@@ -13,7 +13,10 @@ var scanCmd = &cobra.Command{
 
 	Run: func(cmd *cobra.Command, args []string) {
 		hostname := generator.GetHostname()
+		osName := generator.GetOS()
+		
 		fmt.Println("Hostname:", hostname)
+		fmt.Println("OS:", osName)
 	},
 }
 
