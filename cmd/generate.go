@@ -35,8 +35,12 @@ var generateCmd = &cobra.Command{
 			middleware,
 		)
 
+		hostname := generator.GetHostname()
+		fmt.Println("hostname:", hostname)
+
 		data := generator.DocumentData{
 			Project: project,
+			Hostname:   hostname,
 			OS:      osName,
 			CPU:     cpu,
 			Memory:  memory,
@@ -79,7 +83,7 @@ var generateCmd = &cobra.Command{
 		}
 
 		fmt.Println("build_procedure.md generated")
-		
+
 	},
 }
 

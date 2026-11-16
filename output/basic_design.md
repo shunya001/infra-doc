@@ -1,6 +1,8 @@
 基本設計書
 システム名
 sa
+ホスト名
+p-fukugyou-01
 OS
 L
 CPU

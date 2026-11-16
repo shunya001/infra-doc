@@ -9,6 +9,7 @@ import (
 
 type DocumentData struct {
 	Project string
+	Hostname   string
 	OS      string
 	CPU     string
 	Memory  string
