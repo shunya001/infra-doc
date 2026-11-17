@@ -36,24 +36,25 @@ func GetOS() string {
 	)
 }
 
-func GetMemory() string {
-	output, err := exec.Command(
-		"free",
-		"-h",
-		).Output()
-
-		if err != nil {
-			return "unknown"
-		}
-
-		return string(output)
-}
-
 func GetCPU() string {
 	output, err := exec.Command(
 		"bash",
 		"-c",
 		"lscpu | grep 'Model name'",
+	).Output()
+
+	if err != nil {
+		return "unknown"
+	}
+
+	return strings.TrimSpace(string(output))
+}
+
+func GetMemory() string {
+	output, err := exec.Command(
+		"bash",
+		"-c",
+		"free -h | grep Mem | awk '{print $2}'",
 	).Output()
 
 	if err != nil {
