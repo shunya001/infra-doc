@@ -1,13 +1,13 @@
 基本設計書
-システム名
-web
+プロジェクト名
+web-prod
 ホスト名
 p-fukugyou-01
 OS
-RockyLinux9
+Ubuntu 26.04.1 LTS
 CPU
-4
+Model name:                              Intel(R) Core(TM) 5 120U
 メモリ
-8GB
-ミドルウェア
-nginx
+7.6Gi
+ディスク
+1007G

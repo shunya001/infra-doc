@@ -7,6 +7,8 @@ import (
 	"github.com/spf13/cobra"
 )
 
+var project string
+
 var scanCmd = &cobra.Command{
 	Use:   "scan",
 	Short: "Scan system information",
@@ -25,6 +27,7 @@ var scanCmd = &cobra.Command{
 		fmt.Println("Disk:", disk)
 
 		data := generator.DocumentData{
+			Project:  project,
 			Hostname: hostname,
 			OS:       osName,
 			CPU:      cpu,
@@ -38,6 +41,18 @@ var scanCmd = &cobra.Command{
 			data,
 		)
 
+		err = generator.GenerateFile(
+			"internal/template/basic_design.tmpl",
+			"output/basic_design.md",
+			data,
+		)
+
+		err = generator.GenerateFile(
+			"internal/template/parameter_sheet.tmpl",
+			"output/parameter_sheet.md",
+			data,
+		)
+
 		if err != nil {
 			panic(err)
 		}
@@ -47,5 +62,12 @@ var scanCmd = &cobra.Command{
 }
 
 func init() {
+	scanCmd.Flags().StringVarP(
+		&project,
+		"project",
+		"p",
+		"Auto Generated",
+		"project name",
+	)
 	rootCmd.AddCommand(scanCmd)
 }
