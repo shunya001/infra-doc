@@ -13,6 +13,7 @@ type DocumentData struct {
 	OS      string
 	CPU     string
 	Memory  string
+	Disk       string
 	Middleware string
 	Procedure  string
 }

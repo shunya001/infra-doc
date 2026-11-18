@@ -1,13 +1,19 @@
 infra-doc
-Infrastructure Document Generator
+Infrastructure Document Generator CLI
 
 Features
-Generate Basic Design Document
-Generate Parameter Sheet
-Generate Build Procedure
-Scan Hostname
+Basic Design Document Generation
+Parameter Sheet Generation
+Build Procedure Generation
+System Information Scan
+Scan Information
+Hostname
+OS
+CPU
+Memory
+Disk
 Commands
-Generate Document
+Generate Documents
 go run . generate
-Scan System Information
+Scan System
 go run . scan

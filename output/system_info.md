@@ -7,3 +7,5 @@ CPU
 Model name:                              Intel(R) Core(TM) 5 120U
 Memory
 7.6Gi
+Disk
+1007G

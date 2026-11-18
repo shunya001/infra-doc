@@ -16,17 +16,20 @@ var scanCmd = &cobra.Command{
 		osName := generator.GetOS()
 		cpu := generator.GetCPU()
 		memory := generator.GetMemory()
+		disk := generator.GetDisk()
 
 		fmt.Println("Hostname:", hostname)
 		fmt.Println("OS:", osName)
 		fmt.Println("CPU:", cpu)
 		fmt.Println("Memory:", memory)
+		fmt.Println("Disk:", disk)
 
 		data := generator.DocumentData{
 			Hostname: hostname,
 			OS:       osName,
 			CPU:      cpu,
 			Memory:   memory,
+			Disk:     disk,
 		}
 
 		err := generator.GenerateFile(

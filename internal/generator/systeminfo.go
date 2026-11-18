@@ -63,3 +63,19 @@ func GetMemory() string {
 
 	return strings.TrimSpace(string(output))
 }
+
+func GetDisk() string {
+	output, err := exec.Command(
+		"bash",
+		"-c",
+		"df -h / | tail -1 | awk '{print $2}'",
+	).Output()
+
+	if err != nil {
+		return "unknown"
+	}
+
+	return strings.TrimSpace(
+		string(output),
+	)
+}
