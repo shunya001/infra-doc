@@ -7,29 +7,32 @@ import (
 	"github.com/spf13/cobra"
 )
 
+var (
+	projectFlag    string
+	osFlag         string
+	cpuFlag        string
+	memoryFlag     string
+	middlewareFlag string
+)
+
 var generateCmd = &cobra.Command{
 	Use: "generate",
 	Run: func(cmd *cobra.Command, args []string) {
-		var project string
-		var osName string
-		var cpu string
-		var memory string
-		var middleware string
+		project := projectFlag
+		osName := osFlag
+		cpu := cpuFlag
+		memory := memoryFlag
+		middleware := middlewareFlag
 
-		fmt.Print("Project Name: ")
-		fmt.Scanln(&project)
+		if project == "" {
+			fmt.Println("project is required")
+			return
+		}
 
-		fmt.Print("OS: ")
-		fmt.Scanln(&osName)
-
-		fmt.Print("CPU: ")
-		fmt.Scanln(&cpu)
-
-		fmt.Print("Memory: ")
-		fmt.Scanln(&memory)
-
-		fmt.Print("Middleware: ")
-		fmt.Scanln(&middleware)
+		if middleware == "" {
+			fmt.Println("middleware is required")
+			return
+		}
 
 		procedure := generator.GetProcedure(
 			middleware,
@@ -88,5 +91,42 @@ var generateCmd = &cobra.Command{
 }
 
 func init() {
+	generateCmd.Flags().StringVarP(
+		&projectFlag,
+		"project",
+		"p",
+		"",
+		"project name",
+	)
+
+	generateCmd.Flags().StringVar(
+		&osFlag,
+		"os",
+		"",
+		"os name",
+	)
+
+	generateCmd.Flags().StringVar(
+		&cpuFlag,
+		"cpu",
+		"",
+		"cpu count",
+	)
+
+	generateCmd.Flags().StringVar(
+		&memoryFlag,
+		"memory",
+		"",
+		"memory size",
+	)
+
+	generateCmd.Flags().StringVarP(
+		&middlewareFlag,
+		"middleware",
+		"m",
+		"",
+		"middleware name",
+	)
+	
 	rootCmd.AddCommand(generateCmd)
 }

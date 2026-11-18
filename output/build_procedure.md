@@ -1,6 +1,6 @@
 構築手順書
 プロジェクト
-web
+web-prod
 OS
 RockyLinux9
 ミドルウェア

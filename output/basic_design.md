@@ -4,10 +4,9 @@ web-prod
 ホスト名
 p-fukugyou-01
 OS
-Ubuntu 26.04.1 LTS
+RockyLinux9
 CPU
-Model name:                              Intel(R) Core(TM) 5 120U
+4
 メモリ
-7.6Gi
+8GB
 ディスク
-1007G
