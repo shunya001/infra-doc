@@ -7,3 +7,4 @@ Memory	7.6Gi
 Middleware	
 Hostname	p-fukugyou-01
 Disk    1007G
+IP Address  172.18.178.254

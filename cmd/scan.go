@@ -21,12 +21,14 @@ var scanCmd = &cobra.Command{
 		cpu := generator.GetCPU()
 		memory := generator.GetMemory()
 		disk := generator.GetDisk()
+		ipAddress := generator.GetIPAddress()
 
 		fmt.Println("Hostname:", hostname)
 		fmt.Println("OS:", osName)
 		fmt.Println("CPU:", cpu)
 		fmt.Println("Memory:", memory)
 		fmt.Println("Disk:", disk)
+		fmt.Println("IP Address:", ipAddress)
 
 		if scanProjectFlag == "" {
 			fmt.Println("project is required")
@@ -40,6 +42,7 @@ var scanCmd = &cobra.Command{
 			CPU:      cpu,
 			Memory:   memory,
 			Disk:     disk,
+			IPAddress: ipAddress,
 		}
 
 		err := generator.GenerateFile(

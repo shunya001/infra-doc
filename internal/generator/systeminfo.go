@@ -79,3 +79,19 @@ func GetDisk() string {
 		string(output),
 	)
 }
+
+func GetIPAddress() string {
+	output, err := exec.Command(
+		"bash",
+		"-c",
+		"hostname -I | awk '{print $1}'",
+	).Output()
+
+	if err != nil {
+		return "unknown"
+	}
+
+	return strings.TrimSpace(
+		string(output),
+	)
+}

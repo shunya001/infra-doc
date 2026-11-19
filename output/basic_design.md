@@ -11,3 +11,5 @@ Model name:                              Intel(R) Core(TM) 5 120U
 7.6Gi
 ディスク
 1007G
+IPアドレス
+172.18.178.254
