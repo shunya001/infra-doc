@@ -9,6 +9,8 @@ import (
 
 var project string
 
+var scanProjectFlag string
+
 var scanCmd = &cobra.Command{
 	Use:   "scan",
 	Short: "Scan system information",
@@ -26,8 +28,13 @@ var scanCmd = &cobra.Command{
 		fmt.Println("Memory:", memory)
 		fmt.Println("Disk:", disk)
 
+		if scanProjectFlag == "" {
+			fmt.Println("project is required")
+			return
+		}
+
 		data := generator.DocumentData{
-			Project:  project,
+			Project:  scanProjectFlag,
 			Hostname: hostname,
 			OS:       osName,
 			CPU:      cpu,
@@ -63,10 +70,10 @@ var scanCmd = &cobra.Command{
 
 func init() {
 	scanCmd.Flags().StringVarP(
-		&project,
+		&scanProjectFlag,
 		"project",
 		"p",
-		"Auto Generated",
+		"",
 		"project name",
 	)
 	rootCmd.AddCommand(scanCmd)
