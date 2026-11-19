@@ -95,3 +95,19 @@ func GetIPAddress() string {
 		string(output),
 	)
 }
+
+func GetNetworkInterface() string {
+	output, err := exec.Command(
+		"bash",
+		"-c",
+		"ip route | grep default | awk '{print $5}'",
+	).Output()
+
+	if err != nil {
+		return "unknown"
+	}
+
+	return strings.TrimSpace(
+		string(output),
+	)
+}

@@ -14,6 +14,7 @@ type DocumentData struct {
 	CPU     string
 	Memory  string
 	Disk       string
+	NetworkInterface string
 	IPAddress  string
 	Middleware string
 	Procedure  string

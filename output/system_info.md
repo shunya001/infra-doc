@@ -9,5 +9,7 @@ Memory
 7.6Gi
 Disk
 1007G
+Network Interface
+eth0
 IP Address
 172.18.178.254

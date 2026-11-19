@@ -21,6 +21,7 @@ var scanCmd = &cobra.Command{
 		cpu := generator.GetCPU()
 		memory := generator.GetMemory()
 		disk := generator.GetDisk()
+		networkInterface := generator.GetNetworkInterface()
 		ipAddress := generator.GetIPAddress()
 
 		fmt.Println("Hostname:", hostname)
@@ -28,6 +29,10 @@ var scanCmd = &cobra.Command{
 		fmt.Println("CPU:", cpu)
 		fmt.Println("Memory:", memory)
 		fmt.Println("Disk:", disk)
+		fmt.Println(
+			"Network Interface:",
+			networkInterface,
+		)
 		fmt.Println("IP Address:", ipAddress)
 
 		if scanProjectFlag == "" {
@@ -42,6 +47,7 @@ var scanCmd = &cobra.Command{
 			CPU:      cpu,
 			Memory:   memory,
 			Disk:     disk,
+			NetworkInterface: networkInterface,
 			IPAddress: ipAddress,
 		}
 
