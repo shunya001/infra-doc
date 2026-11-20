@@ -1,6 +1,7 @@
 package generator
 
 import (
+	"encoding/json"
 	"os"
 	"text/template"
 )
@@ -65,4 +66,46 @@ sudo systemctl start httpd
 		default:
 			return "manual installation"
 	}
+}
+
+func GenerateJSON(
+	outputPath string,
+	data DocumentData,
+) error {
+	file, err := os.Create(
+		outputPath,
+	)
+
+	if err != nil {
+		return err
+	}
+
+	defer file.Close()
+
+	encoder := json.NewEncoder(
+		file,
+	)
+
+	encoder.SetIndent("", "  ")
+
+	return encoder.Encode(data)
+}
+
+func ReadJSON(
+	inputPath string,
+) (DocumentData, error) {
+	var data DocumentData
+	file, err := os.Open(inputPath)
+
+	if err != nil {
+		return data, err
+	}
+
+	defer file.Close()
+
+	decoder := json.NewDecoder(file)
+
+	err = decoder.Decode(&data)
+
+	return data, err
 }

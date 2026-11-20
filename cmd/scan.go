@@ -73,6 +73,19 @@ var scanCmd = &cobra.Command{
 			panic(err)
 		}
 
+		err = generator.GenerateJSON(
+			"output/server_info.json",
+			data,
+		)
+
+		if err != nil {
+			panic(err)
+		}
+		
+		fmt.Println(
+			"server_info.json generated",
+		)
+
 		fmt.Println("system_info.md generated")
 	},
 }
